@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from .category import Category
 
 User = get_user_model()
 
@@ -7,7 +8,7 @@ User = get_user_model()
 class Article(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
-    categories = models.ManyToManyField('Category', blank=True, related_name='articles')
+    categories = models.ManyToManyField(Category, blank=True, related_name='articles')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     last_visited = models.DateTimeField(null=True, blank=True)
@@ -30,8 +31,8 @@ class Article(models.Model):
     cover_image = models.ImageField(upload_to='article_covers/', null=True, blank=True)
     is_published = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.title
 
     class Meta:
         ordering = ['-created_at']
-    def __str__(self):
-        return self.title

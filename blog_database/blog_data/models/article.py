@@ -7,6 +7,7 @@ User = get_user_model()
 class Article(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
+    categories = models.ManyToManyField('Category', blank=True, related_name='articles')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     last_visited = models.DateTimeField(null=True, blank=True)
@@ -26,6 +27,7 @@ class Article(models.Model):
     external_link = models.URLField(max_length=500, null=True, blank=True)
     external_video_url = models.URLField(max_length=500, null=True, blank=True)
     image_gallery = models.JSONField(default=list, blank=True)
+    cover_image = models.ImageField(upload_to='article_covers/', null=True, blank=True)
     is_published = models.BooleanField(default=False)
 
 
@@ -33,4 +35,3 @@ class Article(models.Model):
         ordering = ['-created_at']
     def __str__(self):
         return self.title
-    

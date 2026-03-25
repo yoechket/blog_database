@@ -1,4 +1,9 @@
 __pycache__/
 */migrations/
-db.sqlite3
+db.sqlite3*
 /blog_database/blog_data/migrations
+launch.json
+*pycache*/
+*.pyc
+*.pyo
+*.pyd

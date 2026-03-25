@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+OPENAI_API_KEY = "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"
 
 # Application definition
 

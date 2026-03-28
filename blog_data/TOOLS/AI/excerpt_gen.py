@@ -3,10 +3,10 @@ import ollama
 def generate_excerpt_with_ollama(title, content, categories):
     category_names = ", ".join([cat.name for cat in categories])
 
-    response = ollama.chat(model='llama4', messages=[
+    response = ollama.chat(model='llama3.1', messages=[
         {
             'role': 'user',
-            'content': f'Create a 2-3 sentence excerpt for:\nTitle: {title}\nCategories: {category_names}\nContent: {content[:1000]}'
+            'content': f'Create a 3-4 sentence excerpt for:\nTitle: {title}\nCategories: {category_names}\nContent: {content[:1000]}'
         }
     ])
     return response['message']['content']

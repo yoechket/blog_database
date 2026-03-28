@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 
 from .category import Category
 
-from blog_data.TOOLS.AI.excerpt_gen import generate_excerpt_with_ai
+from blog_data.TOOLS.AI.excerpt_gen import generate_excerpt_with_ollama
 
 User = get_user_model()
 
@@ -45,7 +45,7 @@ class Article(models.Model):
         super().save(*args, **kwargs)  # Save first to get an ID for M2M
 
         if not self.excerpt:
-            self.excerpt = generate_excerpt_with_ai(
+            self.excerpt = generate_excerpt_with_ollama(
                 self.title, self.content, self.categories.all())
         super().save(*args, **kwargs)
 

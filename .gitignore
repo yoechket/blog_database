@@ -1,0 +1,10 @@
+__pycache__/
+db.sqlite3
+migrations/
+.vscode/
+*.pyc
+*.pyo
+*.pyd
+*/settings.py
+.venv/
+blog_database/

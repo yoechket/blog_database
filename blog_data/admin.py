@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .models.article import Article
 from .models.category import Category
+from .models.gallery_image import GalleryImage
 
 
 @admin.register(Article)
@@ -19,3 +20,6 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category)
+
+
+admin.site.register(GalleryImage)

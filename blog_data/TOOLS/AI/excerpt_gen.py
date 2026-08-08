@@ -5,8 +5,10 @@ def generate_excerpt_with_ollama(title, content, categories):
 
     response = ollama.chat(model='llama3.1', messages=[
         {
-            'role': 'user',
-            'content': f'Create a 3-4 sentence excerpt for:\nTitle: {title}\nCategories: {category_names}\nContent: {content[:1000]}'
+            "role": "user",
+            "content": "Create a 2 phrase summary for:\nTitle:" +\
+                f"{title}\nCategories: {category_names}\nContent: {content[:1000]}" + \
+                "And remove any introductory sentences such as: Here is a ... summary:"
         }
     ])
     return response['message']['content']
